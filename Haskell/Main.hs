@@ -32,7 +32,7 @@ main = do
   let eps = read arg_eps :: Rational
   let result = closest n q eps
   let decimal = fromRational result
-  putStr "Closest rational number within given tolerance: "
+  putStr "Closest rational number: "
   print result
   putStr "Decimal approximation: "
   print decimal

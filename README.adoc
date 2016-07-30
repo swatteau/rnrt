@@ -6,16 +6,21 @@ It is an experimental program used to compute a rational approximation to the nt
 The algorithm is simply based on a search in the Stern-Brocot tree and is currently written in Haskell.
 Implementations in other programming languages may come later.
 
+This work was influenced by Norman Wildberger's link:https://www.youtube.com/user/njwildberger[MathFoundations video series].
+
 == Example usage
 
 To get a rational approximation to the cubic root of 2 with an error less than 1/1000:
 
 ----
 $ runhaskell Main.hs 3 2%1 1%1000
-Closest rational number within given tolerance: 63 % 50
+Closest rational number: 63 % 50
 Decimal approximation: 1.26
 Control: 2.000376
 ----
+
+Note that the error is measured beetween the original number and the solution raised at the nth power.
+In the above example, the error is (2.000376 - 2.0) = 0.000376, which is less than 1/1000.
 
 == License
 
