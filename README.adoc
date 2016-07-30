@@ -19,7 +19,7 @@ Decimal approximation: 1.26
 Control: 2.000376
 ----
 
-Note that the error is measured beetween the original number and the computed solution raised to the nth power.
+Note that the error is measured between the original number and the computed solution raised to the nth power.
 In the above example, the error is (2.000376 - 2.0) = 0.000376, which is less than 1/1000.
 
 == License
