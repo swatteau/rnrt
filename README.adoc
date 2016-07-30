@@ -1,12 +1,12 @@
 == About rnrt
 
-*Rnrt* stands for _Rational nth root_.
+*rnrt* stands for _rational nth root_.
 It is an experimental program used to compute a rational approximation to the nth root of any rational number.
 
 The algorithm is simply based on a search in the Stern-Brocot tree and is currently written in Haskell.
 Implementations in other programming languages may come later.
 
-This work was influenced by Norman Wildberger's link:https://www.youtube.com/user/njwildberger[MathFoundations video series].
+This work was inspired by Norman Wildberger's link:https://www.youtube.com/user/njwildberger[MathFoundations video series].
 
 == Example usage
 
