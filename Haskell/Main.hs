@@ -15,6 +15,7 @@ module Main where
 
 import Data.Ratio
 import System.Environment
+import System.Exit
 
 import Rnrt
 
@@ -23,20 +24,30 @@ closest n q eps =
     let seq = rnrt n q
     in head $ dropWhile (\r -> abs (q - r ^ n) > eps ) seq
 
+readPositiveInteger :: String -> IO Integer
+readPositiveInteger arg =
+    let value = read arg :: Integer
+    in if value > 0
+           then return value
+           else die ("Expected positive integer but got " ++ show value)
+
+readPositiveRational :: String -> IO Rational
+readPositiveRational arg =
+    let value = read arg :: Rational
+    in if value > 0
+           then return value
+           else die ("Expected positive rational but got " ++ show value)
 
 main :: IO ()
 main = do
   [arg_n, arg_q, arg_eps] <- getArgs
-  let n = read arg_n :: Integer
-  let q = read arg_q :: Rational
-  let eps = read arg_eps :: Rational
-  let result = closest n q eps
-  let decimal = fromRational result
-  putStr "Closest rational number: "
-  print result
-  putStr "Decimal approximation: "
-  print decimal
-  putStr "Control: "
-  print (decimal ^ n)
+  n <- readPositiveInteger arg_n
+  q <- readPositiveRational arg_q
+  eps <- readPositiveRational arg_eps
+  let root = closest n q eps
+  let decimal = fromRational root
+  putStrLn $ "Rational approximation: " ++ show root
+  putStrLn $ "Decimal approximation: " ++ show decimal
+  putStrLn $ "Control: " ++ (show . fromRational) (root ^ n)
 
 
