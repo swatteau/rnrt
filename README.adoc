@@ -14,7 +14,7 @@ To get a rational approximation to the cubic root of 2 with an error less than 1
 
 ----
 $ runhaskell Main.hs 3 2%1 1%1000
-Closest rational number: 63 % 50
+Rational approximation: 63 % 50
 Decimal approximation: 1.26
 Control: 2.000376
 ----
