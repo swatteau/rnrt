@@ -19,13 +19,6 @@ import System.Exit
 
 import Rnrt
 
-closest :: Integer -> Rational -> Rational -> Rational
-closest n q eps =
-    if q == 1%1
-        then q
-        else let seq = rnrt n q
-             in head $ dropWhile (\r -> abs (q - r ^ n) > eps ) seq
-
 readPositiveInteger :: String -> IO Integer
 readPositiveInteger arg =
     let value = read arg :: Integer
