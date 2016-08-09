@@ -11,7 +11,7 @@
 -- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
-module Rnrt (closest, rnrt) where
+module Rnrt (closest, rnrtSeq) where
 
 import Control.Applicative ((<$>))
 import Control.Monad.State
@@ -38,18 +38,18 @@ closest :: Integer -> Rational -> Rational -> Rational
 closest n q eps =
     if q == 1%1
         then q
-        else let seq = rnrt n q
+        else let seq = rnrtSeq n q
              in head $ dropWhile (\r -> abs (q - r ^ n) > eps ) seq
 
-rnrt :: Integer -> Rational -> [Rational]
-rnrt n q =
+rnrtSeq :: Integer -> Rational -> [Rational]
+rnrtSeq n q =
     let initError = q
     in if q > 1
-         then map inverse $ evalState (rnrt' n (inverse q)) initError
-         else evalState (rnrt' n q) initError
+         then map inverse $ evalState (rnrtSeq' n (inverse q)) initError
+         else evalState (rnrtSeq' n q) initError
 
-rnrt' :: Integer -> Rational -> State Rational [Rational]
-rnrt' n q = go (0, 1)
+rnrtSeq' :: Integer -> Rational -> State Rational [Rational]
+rnrtSeq' n q = go (0, 1)
   where
     go :: SBNode -> State Rational [Rational]
     go node = do
