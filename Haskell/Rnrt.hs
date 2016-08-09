@@ -11,7 +11,7 @@
 -- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
-module Rnrt (closest, rnrtSeq) where
+module Rnrt (rnrt, rnrtSeq) where
 
 import Control.Applicative ((<$>))
 import Control.Monad.State
@@ -34,8 +34,8 @@ left node@(a, b) = (a, value node)
 right :: SBNode -> SBNode
 right node@(a, b) = (value node, b)
 
-closest :: Integer -> Rational -> Rational -> Rational
-closest n q eps =
+rnrt :: Integer -> Rational -> Rational -> Rational
+rnrt n q eps =
     if q == 1%1
         then q
         else let seq = rnrtSeq n q

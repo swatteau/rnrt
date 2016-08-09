@@ -39,7 +39,7 @@ main = do
   n <- readPositiveInteger arg_n
   q <- readPositiveRational arg_q
   eps <- readPositiveRational arg_eps
-  let root = closest n q eps
+  let root = rnrt n q eps
   let decimal = fromRational root
   putStrLn $ "Rational approximation: " ++ show root
   putStrLn $ "Decimal approximation: " ++ show decimal
